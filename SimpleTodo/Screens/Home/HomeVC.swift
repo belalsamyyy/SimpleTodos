@@ -14,6 +14,13 @@ class HomeVC: UIViewController {
      
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
+     
+    private lazy var refreshControl : UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.tintColor = .black
+        refreshControl.addTarget(self, action: #selector(refreshView(_:)), for: .valueChanged)
+        return refreshControl
+    }()
     
     //MARK: - Properties
      
@@ -60,6 +67,7 @@ class HomeVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.registerNib(TodoCell.self)
+        tableView.refreshControl = refreshControl
     }
      
     private func bindVM() {
@@ -68,6 +76,15 @@ class HomeVC: UIViewController {
             self.viewModel.getPlaceholders(search: searchText)
             self.viewModel.getTodoList(search: searchText)
         }.store(in: &cancellables)
+    }
+     
+    @objc private func refreshView(_ sender: Any) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self else { return }
+            self.refreshControl.endRefreshing()
+            self.viewModel.restartPlaceholders()
+            self.viewModel.restartTodoList()
+        }
     }
 }
 
