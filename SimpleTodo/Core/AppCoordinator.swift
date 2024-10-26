@@ -9,11 +9,16 @@ import UIKit
 
 class AppCoordinator: Coordinator  {
     private let window: UIWindow
+    private var children: [AppChildCoordinator: Coordinator] = [:]
 
     //MARK: - Init
      
     init(window: UIWindow) {
         self.window = window
+    }
+    
+    enum AppChildCoordinator {
+        case splash
     }
     
     //MARK: - Start
