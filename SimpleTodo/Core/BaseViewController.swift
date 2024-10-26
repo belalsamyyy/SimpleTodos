@@ -11,12 +11,21 @@ class BaseViewController: UIViewController {
 
     //MARK: - Properties
      
-    // nav bar
+    // nav bar title
     var navBarTitle: String? {
         didSet {
             self.title = navBarTitle
         }
     }
+    
+    // bav bar button
+    var navButtonTitle: String? {
+        didSet {
+            setupNavButton()
+        }
+    }
+    
+    var navButtonAction: (() -> Void)?
     
     //MARK: - LifeCycle
     
@@ -32,6 +41,17 @@ class BaseViewController: UIViewController {
     private func setupNavigationBar() {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = navBarTitle
+    }
+     
+    private func setupNavButton() {
+        if let buttonTitle = navButtonTitle {
+            let button = UIBarButtonItem(title: buttonTitle, style: .plain, target: self, action: #selector(navButtonTapped))
+            navigationItem.rightBarButtonItem = button
+        }
+    }
+     
+    @objc private func navButtonTapped() {
+        navButtonAction?()
     }
 }
 

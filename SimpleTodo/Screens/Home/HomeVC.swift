@@ -66,6 +66,11 @@ class HomeVC: BaseViewController {
      
     private func setupNavBar() {
         navBarTitle = "To-Do List"
+        navButtonTitle = "+ New"
+        navButtonAction = { [weak self] in
+            guard let self else { return }
+            self.handleAddBtnTapped()
+        }
     }
      
     private func setupTableView() {
@@ -90,6 +95,12 @@ class HomeVC: BaseViewController {
             self.viewModel.restartPlaceholders()
             self.viewModel.restartTodoList()
         }
+    }
+    
+    //MARK: - Actions
+     
+    private func handleAddBtnTapped() {
+        print("Add Btn tapped ...")
     }
 }
 
