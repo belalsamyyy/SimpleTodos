@@ -113,7 +113,7 @@ extension HomeViewModel: HomeViewModelInput {
     }
     
     func moreExamplesButtonTapped() {
-        // ...
+        coordinator.startExamplesFlow()
     }
 }
 

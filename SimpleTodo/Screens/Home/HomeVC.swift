@@ -113,6 +113,7 @@ class HomeVC: BaseViewController {
     
     @IBAction func moreExamplesBtnTapped(_ sender: Any) {
         print("more examples btn tapped ...")
+        self.viewModel.moreExamplesButtonTapped()
     }
     
 }

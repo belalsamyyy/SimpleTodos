@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeCoordinator: NavigationCoordinator {
+class HomeCoordinator: NavigationCoordinator, CoordinatorDelegate {
     weak var delegate: CoordinatorDelegate?
     var navigationController: UINavigationController
     private var children: [HomeChildCoordinator: Coordinator] = [:]
@@ -30,9 +30,21 @@ class HomeCoordinator: NavigationCoordinator {
         navigationController.setViewControllers([homeVC], animated: true)
     }
     
+    func startExamplesFlow() {
+        let examplesCoordinator = ExamplesCoordinator(navigationController: navigationController, delegate: self)
+        children[.examples] = examplesCoordinator
+        examplesCoordinator.start()
+    }
+    
     //MARK: - Finish
      
     func finish() {
         delegate?.coordinatorDidFinish(self)
+    }
+     
+    func coordinatorDidFinish(_ coordinator: any Coordinator) {
+        if coordinator === children[.examples] {
+            children.removeValue(forKey: .examples)
+        }
     }
 }
