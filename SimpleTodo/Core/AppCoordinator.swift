@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AppCoordinator: Coordinator  {
+class AppCoordinator: Coordinator, CoordinatorDelegate  {
     private let window: UIWindow
     private var children: [AppChildCoordinator: Coordinator] = [:]
 
@@ -23,6 +23,20 @@ class AppCoordinator: Coordinator  {
     
     //MARK: - Start
      
-    func start() {}
+    func start() {
+        startSplashFlow()
+    }
+     
+    func startSplashFlow() {
+        let splashNavigationController = UINavigationController()
+        let splashCoordinator = SplashCoordinator(navigationController: splashNavigationController, delegate: self)
+        children[.splash] = splashCoordinator
+        splashCoordinator.start()
+        window.replaceRootViewController(splashNavigationController)
+    }
+    
+    //MARK: - Finish
+     
+    func coordinatorDidFinish(_ coordinator: any Coordinator) {}
 }
 
