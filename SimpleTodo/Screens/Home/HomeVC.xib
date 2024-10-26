@@ -10,6 +10,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeVC" customModule="SimpleTodo" customModuleProvider="target">
             <connections>
+                <outlet property="searchBar" destination="Vkb-Sa-ZBa" id="UcZ-Qr-zBI"/>
+                <outlet property="tableView" destination="sOH-Nl-Vx7" id="eU5-1f-ZNX"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -17,14 +19,39 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="Vkb-Sa-ZBa">
+                    <rect key="frame" x="10" y="59" width="373" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="eZR-g4-bAU"/>
+                    </constraints>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="T2B-Py-oG4"/>
+                    </connections>
+                </searchBar>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="sOH-Nl-Vx7">
+                    <rect key="frame" x="10" y="109" width="373" height="709"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
+            </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" systemColor="systemPinkColor"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="sOH-Nl-Vx7" firstAttribute="top" secondItem="Vkb-Sa-ZBa" secondAttribute="bottom" id="CED-OJ-snl"/>
+                <constraint firstItem="sOH-Nl-Vx7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="REw-oS-cWm"/>
+                <constraint firstItem="Vkb-Sa-ZBa" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="c40-t2-v6Z"/>
+                <constraint firstItem="Vkb-Sa-ZBa" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="fUh-MS-FKP"/>
+                <constraint firstItem="Vkb-Sa-ZBa" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="kyi-t5-tWh"/>
+                <constraint firstItem="sOH-Nl-Vx7" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="pXV-q4-ew2"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="sOH-Nl-Vx7" secondAttribute="bottom" id="xxf-t3-a9T"/>
+            </constraints>
             <point key="canvasLocation" x="138" y="20"/>
         </view>
     </objects>
     <resources>
-        <systemColor name="systemPinkColor">
-            <color red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>
