@@ -101,6 +101,12 @@ class HomeVC: BaseViewController {
      
     private func handleAddBtnTapped() {
         print("Add Btn tapped ...")
+        self.presentAlertWithTextField(title: "Add New Todo", message: "Ex. Buy milk, Clean room, ....", actionTitle: "Add") { [weak self] textFieldText in
+            guard let self else { return }
+            guard !textFieldText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return }
+            let newTodo = TodoListItemModel(title: textFieldText, completed: false)
+            self.viewModel.addTodo(newTodo)
+        }
     }
 }
 
