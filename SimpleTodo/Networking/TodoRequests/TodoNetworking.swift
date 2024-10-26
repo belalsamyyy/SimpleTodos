@@ -16,7 +16,7 @@ protocol TodoNetworking {
 
 //MARK: - Requests
 
-struct DefaultTodoListNetworking: TodoNetworking {
+struct DefaultTodoNetworking: TodoNetworking {
     private let service: NetworkManager
     
     init(service: NetworkManager = .shared) {
