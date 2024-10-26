@@ -20,7 +20,7 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="Vkb-Sa-ZBa">
+                <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="search for todo ..." translatesAutoresizingMaskIntoConstraints="NO" id="Vkb-Sa-ZBa">
                     <rect key="frame" x="10" y="59" width="373" height="50"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="eZR-g4-bAU"/>
