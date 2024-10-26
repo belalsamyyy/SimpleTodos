@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-class HomeVC: UIViewController {
+class HomeVC: BaseViewController {
     
     //MARK: - Outlets
      
@@ -43,10 +43,11 @@ class HomeVC: UIViewController {
     }
      
     //MARK: - LifeCycle
-    
+     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        setupNavBar()
         setupTableView()
         bindVM()
     }
@@ -61,6 +62,10 @@ class HomeVC: UIViewController {
      
     private func setupUI() {
         searchBar.delegate = self
+    }
+     
+    private func setupNavBar() {
+        navBarTitle = "To-Do List"
     }
      
     private func setupTableView() {
