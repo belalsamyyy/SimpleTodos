@@ -290,7 +290,7 @@
 				BASE_URL = "https://jsonplaceholder.typicode.com/";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8A4HTMPS6P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SimpleTodo/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Todo;
@@ -319,7 +319,7 @@
 				BASE_URL = "https://jsonplaceholder.typicode.com/";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8A4HTMPS6P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SimpleTodo/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Todo;
