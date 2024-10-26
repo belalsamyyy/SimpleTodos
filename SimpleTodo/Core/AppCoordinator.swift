@@ -13,6 +13,8 @@ class AppCoordinator: Coordinator, CoordinatorDelegate  {
 
     //MARK: - Init
      
+    var rootWindow: UIWindow { window }
+
     init(window: UIWindow) {
         self.window = window
     }
@@ -50,6 +52,9 @@ class AppCoordinator: Coordinator, CoordinatorDelegate  {
         if coordinator === children[.splash] {
             children.removeValue(forKey: .splash)
             startHomeFlow()
+            
+        } else if coordinator === children[.home] {
+            children.removeValue(forKey: .home)
         }
     }
 }

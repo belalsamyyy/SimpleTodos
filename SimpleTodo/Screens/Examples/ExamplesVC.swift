@@ -46,10 +46,14 @@ class ExamplesVC: BaseViewController {
      
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewModel.getPlaceholders(search: "")
         setupNavBar()
         setupTableView()
         bindVM()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.viewModel.getPlaceholders(search: "")
     }
      
     //MARK: - Methods
@@ -107,10 +111,9 @@ extension ExamplesVC: UITableViewDelegate, UITableViewDataSource {
          
         return cell
     }
-    
+     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let section = indexPath.section
-        return viewModel.heightForRow(section: section)
+        return viewModel.heightForRow()
     }
      
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {

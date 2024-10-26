@@ -48,11 +48,11 @@ class CoreDataStore {
     }
 
     //MARK: - Background Context for asynchronous tasks
-    
+     
     var backgroundContext: NSManagedObjectContext {
         return persistentContainer.newBackgroundContext()
     }
-    
+     
     func saveBackgroundContext() {
         let context = backgroundContext
         if context.hasChanges {

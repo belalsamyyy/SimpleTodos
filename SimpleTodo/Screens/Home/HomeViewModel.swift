@@ -150,13 +150,8 @@ extension HomeViewModel: HomeViewModelOutput {
         }
     }
      
-    func heightForRow(section: Int) -> CGFloat {
-        switch section {
-        case 0:
-            return 50
-        default:
-            return 0
-        }
+    func heightForRow() -> CGFloat {
+        return 50
     }
      
     func todo(section: Int, index: Int) -> TodoListItemModel? {

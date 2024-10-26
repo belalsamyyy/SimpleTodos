@@ -163,8 +163,7 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     }
      
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let section = indexPath.section
-        return viewModel.heightForRow(section: section)
+        return viewModel.heightForRow()
     }
      
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -200,7 +199,7 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     }
      
     //MARK: - Helpers
-
+     
     private func swipeToDelete(section: Int, row: Int) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (_, _, completionHandler) in
             guard let self else { return }
@@ -254,10 +253,12 @@ extension HomeVC: UISearchBarDelegate {
 }
 
 //MARK: - View Model Delegate
-
+ 
 extension HomeVC: HomeViewModelDelegate {
     func reloadData() {
-        self.tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
      
     func didExitWithError(error: String) {

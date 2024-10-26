@@ -30,7 +30,7 @@ protocol ExamplesViewModelOuput {
     var isEmpty: Bool { get }
     var numberOfSections: Int { get }
     func numberOfCells(section: Int) -> Int
-    func heightForRow(section: Int) -> CGFloat
+    func heightForRow() -> CGFloat
     func todo(section: Int, index: Int) -> TodoListItemModel?
     func restartPlaceholders()
 }

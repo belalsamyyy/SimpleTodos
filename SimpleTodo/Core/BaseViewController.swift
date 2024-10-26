@@ -54,7 +54,7 @@ class BaseViewController: UIViewController {
             navigationItem.rightBarButtonItem = button
         }
     }
-    
+     
     private func setupActivityIndicator() {
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(activityIndicator)

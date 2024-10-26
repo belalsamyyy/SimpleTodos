@@ -37,7 +37,7 @@ protocol HomeViewModelOutput {
     var numberOfSections: Int { get }
     func headerTitle(section: Int) -> String?
     func numberOfCells(section: Int) -> Int
-    func heightForRow(section: Int) -> CGFloat
+    func heightForRow() -> CGFloat
     func todo(section: Int, index: Int) -> TodoListItemModel?
     func restartPlaceholders()
     func restartTodoList()
