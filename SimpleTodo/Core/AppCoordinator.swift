@@ -16,9 +16,10 @@ class AppCoordinator: Coordinator, CoordinatorDelegate  {
     init(window: UIWindow) {
         self.window = window
     }
-    
+     
     enum AppChildCoordinator {
         case splash
+        case home
     }
     
     //MARK: - Start
@@ -34,9 +35,22 @@ class AppCoordinator: Coordinator, CoordinatorDelegate  {
         splashCoordinator.start()
         window.replaceRootViewController(splashNavigationController)
     }
+     
+    func startHomeFlow() {
+        let homeNavigationController = UINavigationController()
+        let homeCoordinator = HomeCoordinator(navigationController: homeNavigationController, delegate: self)
+        children[.home] = homeCoordinator
+        homeCoordinator.start()
+        window.replaceRootViewController(homeNavigationController)
+    }
     
     //MARK: - Finish
      
-    func coordinatorDidFinish(_ coordinator: any Coordinator) {}
+    func coordinatorDidFinish(_ coordinator: any Coordinator) {
+        if coordinator === children[.splash] {
+            children.removeValue(forKey: .splash)
+            startHomeFlow()
+        }
+    }
 }
 
