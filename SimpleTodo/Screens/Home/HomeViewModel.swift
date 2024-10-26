@@ -40,7 +40,7 @@ class HomeViewModel {
 //MARK: - Input
 
 extension HomeViewModel: HomeViewModelInput {
-    
+   
     // CRUD Operations
     
     func getPlaceholders(search: String = "") {
@@ -110,6 +110,10 @@ extension HomeViewModel: HomeViewModelInput {
                 self?.delegate.didExitWithError(error: error.value)
             }
         }
+    }
+    
+    func moreExamplesButtonTapped() {
+        // ...
     }
 }
 

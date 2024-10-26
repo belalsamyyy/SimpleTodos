@@ -22,6 +22,7 @@ protocol HomeViewModelInput {
     func addTodo(_ todo: TodoListItemModel)
     func deleteTodo(_ todo: TodoListItemModel)
     func toggleCompleted(_ todo: TodoListItemModel, isCompleted: Bool)
+    func moreExamplesButtonTapped()
 }
 
 //MARK: - Output

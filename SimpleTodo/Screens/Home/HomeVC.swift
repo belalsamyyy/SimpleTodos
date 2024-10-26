@@ -14,7 +14,8 @@ class HomeVC: BaseViewController {
      
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
-     
+    @IBOutlet weak var moreExamplesBtn: UIButton!
+    
     private lazy var refreshControl : UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.tintColor = .black
@@ -62,6 +63,7 @@ class HomeVC: BaseViewController {
      
     private func setupUI() {
         searchBar.delegate = self
+        moreExamplesBtn.setTitle("MORE EXAMPLES", for: .normal)
     }
      
     private func setupNavBar() {
@@ -108,6 +110,11 @@ class HomeVC: BaseViewController {
             self.viewModel.addTodo(newTodo)
         }
     }
+    
+    @IBAction func moreExamplesBtnTapped(_ sender: Any) {
+        print("more examples btn tapped ...")
+    }
+    
 }
 
 //MARK: - Extensions

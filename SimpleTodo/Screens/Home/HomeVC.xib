@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeVC" customModule="SimpleTodo" customModuleProvider="target">
             <connections>
+                <outlet property="moreExamplesBtn" destination="LHJ-Bx-3SF" id="8yv-F8-kaz"/>
                 <outlet property="searchBar" destination="Vkb-Sa-ZBa" id="UcZ-Qr-zBI"/>
                 <outlet property="tableView" destination="sOH-Nl-Vx7" id="eU5-1f-ZNX"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -34,12 +35,27 @@
                     <rect key="frame" x="10" y="109" width="373" height="709"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LHJ-Bx-3SF">
+                    <rect key="frame" x="20" y="753" width="353" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="nbZ-a2-RRZ"/>
+                    </constraints>
+                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="filled" title="MORE EXAMPLES"/>
+                    <connections>
+                        <action selector="moreExamplesBtnTapped:" destination="-1" eventType="touchUpInside" id="GXy-sS-pjo"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="LHJ-Bx-3SF" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="13G-KM-Bea"/>
                 <constraint firstItem="sOH-Nl-Vx7" firstAttribute="top" secondItem="Vkb-Sa-ZBa" secondAttribute="bottom" id="CED-OJ-snl"/>
                 <constraint firstItem="sOH-Nl-Vx7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="REw-oS-cWm"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="LHJ-Bx-3SF" secondAttribute="bottom" constant="25" id="Yh6-R7-6Xl"/>
+                <constraint firstItem="LHJ-Bx-3SF" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="b9a-PM-fp7"/>
                 <constraint firstItem="Vkb-Sa-ZBa" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="c40-t2-v6Z"/>
                 <constraint firstItem="Vkb-Sa-ZBa" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="fUh-MS-FKP"/>
                 <constraint firstItem="Vkb-Sa-ZBa" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="kyi-t5-tWh"/>
