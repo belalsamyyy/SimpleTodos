@@ -14,8 +14,8 @@ extension TodoListItem {
         return NSFetchRequest<TodoListItem>(entityName: "TodoListItem")
     }
 
-    @NSManaged public var id: UUID?
-    @NSManaged public var title: String?
+    @NSManaged public var id: UUID
+    @NSManaged public var title: String
     @NSManaged public var isCompleted: Bool
 }
 
