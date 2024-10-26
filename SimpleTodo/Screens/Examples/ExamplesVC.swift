@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Combine
 
 class ExamplesVC: BaseViewController {
     
@@ -14,8 +15,16 @@ class ExamplesVC: BaseViewController {
      
     @IBOutlet weak var tableView: UITableView!
     
+    private lazy var refreshControl : UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.tintColor = .lightGray
+        refreshControl.addTarget(self, action: #selector(refreshView(_:)), for: .valueChanged)
+        return refreshControl
+    }()
+     
     //MARK: - Properties
      
+    private var cancellables: Set<AnyCancellable> = []
     private var coordinator: ExamplesCoordinator
      
     lazy var viewModel: ExamplesViewModelType = {
@@ -37,25 +46,38 @@ class ExamplesVC: BaseViewController {
      
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.viewModel.getPlaceholders(search: "")
         setupNavBar()
         setupTableView()
+        bindVM()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.viewModel.getPlaceholders(search: "")
-    }
-    
+     
     //MARK: - Methods
     
     private func setupNavBar() {
         navBarTitle = "More Examples"
     }
-    
+     
     private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.registerNib(TodoCell.self)
+        tableView.refreshControl = refreshControl
+    }
+     
+    func bindVM() {
+        viewModel.isLoading.sink { [weak self] isLoading in
+            guard let self else { return }
+            isLoading ? self.startLoading() : self.stopLoading()
+        }.store(in: &cancellables)
+    }
+    
+    @objc private func refreshView(_ sender: Any) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self else { return }
+            self.refreshControl.endRefreshing()
+            self.viewModel.restartPlaceholders()
+        }
     }
 }
 

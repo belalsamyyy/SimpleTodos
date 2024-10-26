@@ -27,6 +27,10 @@ class BaseViewController: UIViewController {
     
     var navButtonAction: (() -> Void)?
     
+    // activity indicator
+    private let activityIndicator = UIActivityIndicatorView(style: .large)
+    
+    
     //MARK: - LifeCycle
     
     override func viewDidLoad() {
@@ -34,6 +38,7 @@ class BaseViewController: UIViewController {
         // Do any additional setup after loading the view.
         view.backgroundColor = .white
         setupNavigationBar()
+        setupActivityIndicator()
     }
 
     //MARK: - Methods
@@ -49,7 +54,34 @@ class BaseViewController: UIViewController {
             navigationItem.rightBarButtonItem = button
         }
     }
+    
+    private func setupActivityIndicator() {
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(activityIndicator)
+        
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+    }
+    
+    //MARK: - Helpers
      
+    func startLoading() {
+        activityIndicator.startAnimating()
+        activityIndicator.color = .black
+        view.isUserInteractionEnabled = false
+    }
+     
+    func stopLoading() {
+        activityIndicator.stopAnimating()
+        activityIndicator.color = .black
+        view.isUserInteractionEnabled = true
+    }
+     
+    
+    //MARK: - Actions
+    
     @objc private func navButtonTapped() {
         navButtonAction?()
     }
